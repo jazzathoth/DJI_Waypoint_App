@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="/mnt/sdd1/Documents/ismapping/apps/Mobile-SDK-Android/Waypoint" vcs="Git" />
   </component>
 </project>
