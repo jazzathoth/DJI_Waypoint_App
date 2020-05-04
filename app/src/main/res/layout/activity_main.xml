@@ -15,7 +15,7 @@
             android:id="@+id/ConnectStatusTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GSDemo"
+            android:text="Waypoint"
             android:gravity="center"
             android:textColor="#000000"
             android:textSize="21sp"
