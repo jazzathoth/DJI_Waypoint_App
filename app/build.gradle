@@ -16,6 +16,7 @@ android {
         buildConfigField("String", "GOOGLE_MAPS_KEY", apikeyProperties['GOOGLE_MAPS_KEY'])
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        manifestPlaceholders = [googleMapsKey: apikeyProperties.GOOGLE_MAPS_KEY]
     }
 
     buildTypes {
