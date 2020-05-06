@@ -1,0 +1,12 @@
+{
+  "client_id": "johndeere-QUkAvtTF6g9ActPLwKsgXBbO5bXTqIr8AmoksW60",
+  "redirect_uri": "com.wp.auth:/callback",
+  "end_session_redirect_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/logout",
+  "scopes": [
+    "ag1",
+    "org1",
+    "files",
+    "offline_access"
+  ],
+  "discovery_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/.well-known/oauth-authorization-server"
+}

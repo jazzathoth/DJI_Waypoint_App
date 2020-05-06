@@ -16,7 +16,7 @@ android {
         buildConfigField("String", "GOOGLE_MAPS_KEY", apikeyProperties['GOOGLE_MAPS_KEY'])
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        manifestPlaceholders = [googleMapsKey: apikeyProperties.GOOGLE_MAPS_KEY]
+        manifestPlaceholders = ["googleMapsKey": apikeyProperties.GOOGLE_MAPS_KEY, "appAuthRedirectScheme": "com.wp.auth"]
     }
 
     buildTypes {
@@ -79,6 +79,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.annotation:annotation:1.1.0'
+
     annotationProcessor 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 }

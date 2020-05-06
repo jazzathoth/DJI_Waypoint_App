@@ -67,7 +67,7 @@ public class Connect extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkAndRequestPermissions();
-        setContentView(R.layout.activity_connection);
+        setContentView(R.layout.connect_layout);
 
         initUI();
 

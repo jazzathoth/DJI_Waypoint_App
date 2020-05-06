@@ -57,7 +57,7 @@ import dji.sdk.useraccount.UserAccountManager;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener, GoogleMap.OnMapClickListener, OnMapReadyCallback {
 
-    protected static final String TAG = "GSDemoActivity";
+    protected static final String TAG = "MainActivity";
 
     private GoogleMap gMap;
 
@@ -156,7 +156,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     , 1);
         }
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_layout);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Setup.FLAG_CONNECTION_CHANGE);
@@ -577,9 +577,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             setUpMap();
         }
 
-        LatLng shenzhen = new LatLng(22.5362, 113.9454);
-        gMap.addMarker(new MarkerOptions().position(shenzhen).title("Marker in Shenzhen"));
-        gMap.moveCamera(CameraUpdateFactory.newLatLng(shenzhen));
+        LatLng hburg = new LatLng(38.482934, -78.870652);
+        gMap.addMarker(new MarkerOptions().position(hburg).title("Marker in Harrisonburg VA"));
+        gMap.moveCamera(CameraUpdateFactory.newLatLng(hburg));
     }
 
 }
