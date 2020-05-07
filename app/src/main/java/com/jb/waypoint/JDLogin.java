@@ -94,7 +94,7 @@ public final class JDLogin extends AppCompatActivity {
                 startAuth()
         );
 
-        ((EditText)findViewById(R.id.login_hint_value)).addTextChangedListner(
+        ((EditText)findViewById(R.id.login_hint_value)).addTextChangedListener(
                 new LoginHintChangeHandler()
         );
 
