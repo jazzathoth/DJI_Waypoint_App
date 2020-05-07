@@ -233,7 +233,7 @@ public class GetToken extends AppCompatActivity {
                 ((TextView) findViewById(R.id.userinfo_name)).setText(name);
 
                 if (userInfo.has("picture")) {
-                    GlideApp.with(TokenActivity.this)
+                    GlideApp.with(GetToken.this)
                             .load(Uri.parse(userInfo.getString("picture")))
                             .fitCenter()
                             .into((ImageView) findViewById(R.id.userinfo_profile));
@@ -388,7 +388,7 @@ public class GetToken extends AppCompatActivity {
         }
         mStateManager.replace(clearedState);
 
-        Intent mainIntent = new Intent(this, LoginActivity.class);
+        Intent mainIntent = new Intent(this, JDLogin.class);
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(mainIntent);
         finish();

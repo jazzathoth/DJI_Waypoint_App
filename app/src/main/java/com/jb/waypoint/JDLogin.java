@@ -288,7 +288,7 @@ public final class JDLogin extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                BrowserInfo info = adapter.getItem(position);
+                BrowserSelectionAdapter.BrowserInfo info = adapter.getItem(position);
                 if (info == null) {
                     mBrowserMatcher = AnyBrowserMatcher.INSTANCE;
                     return;
@@ -488,6 +488,7 @@ public final class JDLogin extends AppCompatActivity {
             mTask = new RecreateAuthRequestTask();
         }
 
+
         @Override
         public void beforeTextChanged(CharSequence cs, int start, int count, int after) {}
 
@@ -520,5 +521,4 @@ public final class JDLogin extends AppCompatActivity {
             mCanceled.set(true);
         }
     }
-}
 }
