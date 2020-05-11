@@ -182,7 +182,7 @@ public final class JDLogin extends AppCompatActivity {
         // if we are not using discovery, build the authorization service configuration directly
         // from the static configuration values.
         if (mConfiguration.getDiscoveryUri() == null) {
-            Log.i(TAG, "Creating auth config from res/raw/auth_config.json");
+            Log.i(TAG, "Creating auth config from res/raw/okta_oidc_config.json");
             AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(
                     mConfiguration.getAuthEndpointUri(),
                     mConfiguration.getTokenEndpointUri(),

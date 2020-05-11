@@ -37,8 +37,8 @@ import dji.sdk.sdkmanager.DJISDKInitEvent;
 import dji.sdk.sdkmanager.DJISDKManager;
 
 
-public class Connect extends Activity implements View.OnClickListener {
-    private static final String TAG = Connect.class.getName();
+public class DJIConnect extends Activity implements View.OnClickListener {
+    private static final String TAG = DJIConnect.class.getName();
 
     private TextView mTextConnectionStatus;
     private TextView mTextProduct;

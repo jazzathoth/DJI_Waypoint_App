@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../config/keystore.gradle'
 def apikeyPropertiesFile = rootProject.file("apikeys.properties")
 def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
@@ -13,11 +14,21 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "GOOGLE_MAPS_KEY", apikeyProperties['GOOGLE_MAPS_KEY'])
+        //buildConfigField("String", "GOOGLE_MAPS_KEY", apikeyProperties['GOOGLE_MAPS_KEY'])
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-        manifestPlaceholders = ["googleMapsKey": apikeyProperties.GOOGLE_MAPS_KEY, "appAuthRedirectScheme": "com.wp.auth"]
+        manifestPlaceholders = ["googleMapsKey": apikeyProperties.GOOGLE_MAPS_KEY,
+                                "appAuthRedirectScheme": "com.jb.waypoint",]
+    }
+
+    signingConfigs {
+        debugAndRelease {
+            storeFile file("${rootDir}/appauth.keystore")
+            storePassword apikeyProperties.STORE_PASS
+            keyAlias "appauth"
+            keyPassword "appauth"
+        }
     }
 
     buildTypes {

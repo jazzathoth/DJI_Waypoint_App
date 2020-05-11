@@ -48,7 +48,7 @@ public final class LoadConfig {
     private Uri mAuthEndpointUri;
     private Uri mTokenEndpointUri;
     private Uri mRegistrationEndpointUri;
-    private Uri mUserInfoEndpointUri;
+//    private Uri mUserInfoEndpointUri;
     private boolean mHttpsRequired;
 
     public static LoadConfig getInstance(Context context) {
@@ -141,10 +141,10 @@ public final class LoadConfig {
         return mRegistrationEndpointUri;
     }
 
-    @Nullable
-    public Uri getUserInfoEndpointUri() {
-        return mUserInfoEndpointUri;
-    }
+//    @Nullable
+//    public Uri getUserInfoEndpointUri() {
+//        return mUserInfoEndpointUri;
+//    }
 
     public boolean isHttpsRequired() {
         return mHttpsRequired;
@@ -192,7 +192,7 @@ public final class LoadConfig {
         if (getConfigString("discovery_uri") == null) {
             mAuthEndpointUri = getRequiredConfigWebUri("authorization_endpoint_uri");
             mTokenEndpointUri = getRequiredConfigWebUri("token_endpoint_uri");
-            mUserInfoEndpointUri = getRequiredConfigWebUri("user_info_endpoint_uri");
+//            mUserInfoEndpointUri = getRequiredConfigWebUri("user_info_endpoint_uri");
 
             if (mClientId == null) {
                 mRegistrationEndpointUri =
@@ -247,9 +247,9 @@ public final class LoadConfig {
                     propName + " must be hierarchical and absolute");
         }
 
-        if (!TextUtils.isEmpty(uri.getEncodedUserInfo())) {
-            throw new InvalidConfigurationException(propName + " must not have user info");
-        }
+//        if (!TextUtils.isEmpty(uri.getEncodedUserInfo())) {
+//            throw new InvalidConfigurationException(propName + " must not have user info");
+//        }
 
         if (!TextUtils.isEmpty(uri.getEncodedQuery())) {
             throw new InvalidConfigurationException(propName + " must not have query parameters");
