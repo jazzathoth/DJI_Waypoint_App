@@ -1,13 +1,11 @@
 {
-  "client_id": "johndeere-QUkAvtTF6g9ActPLwKsgXBbO5bXTqIr8AmoksW60",
-  "redirect_uri": "com.wp.auth:/oauth2redirect",
-  "authorization_scope": "ag1 org1 files offline_access",
-  "discovery_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/.well-known/oauth-authorization-server",
-  "authorization_endpoint_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/authorize",
-  "token_endpoint_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/token",
-  "registration_endpoint_uri": "https://signin.johndeere.com/oauth2/v1/clients",
-  "user_info_endpoint_uri": "",
-  "end_session_redirect_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/logout",
-
-
+	"client_id": "johndeere-QUkAvtTF6g9ActPLwKsgXBbO5bXTqIr8AmoksW60",
+	"redirect_uri": "https://com.jb.auth/oauth2redirect",
+	"authorization_scope": "ag1 org1 files offline_access",
+	"discovery_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/.well-known/oauth-authorization-server",
+	"authorization_endpoint_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/authorize",
+	"token_endpoint_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/token",
+	"registration_endpoint_uri": "https://signin.johndeere.com/oauth2/v1/clients",
+	"user_info_endpoint_uri": "",
+	"end_session_redirect_uri": "https://signin.johndeere.com/oauth2/aus78tnlaysMraFhC1t7/v1/logout"
 }

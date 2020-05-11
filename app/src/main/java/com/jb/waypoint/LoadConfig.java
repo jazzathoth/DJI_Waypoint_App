@@ -295,4 +295,12 @@ public final class LoadConfig {
             super(reason, cause);
         }
     }
+
+    public static String convertStandardJSONString(String data_json) {
+        data_json = data_json.replaceAll("\\\\r\\\\n", "");
+        data_json = data_json.replace("\"{", "{");
+        data_json = data_json.replace("}\",", "},");
+        data_json = data_json.replace("}\"", "}");
+        return data_json;
+    }
 }
