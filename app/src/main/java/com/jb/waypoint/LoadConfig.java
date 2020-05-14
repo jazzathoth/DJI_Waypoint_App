@@ -18,7 +18,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import okio.Buffer;
@@ -93,6 +92,7 @@ public final class LoadConfig {
     /**
      * Returns a description of the configuration error, if the configuration is invalid.
      */
+
     @Nullable
     public String getConfigurationError() {
         return mConfigError;
@@ -102,6 +102,7 @@ public final class LoadConfig {
      * Indicates that the current configuration should be accepted as the "last known valid"
      * configuration.
      */
+
     public void acceptConfiguration() {
         mPrefs.edit().putString(KEY_LAST_HASH, mConfigHash).apply();
     }
@@ -177,8 +178,8 @@ public final class LoadConfig {
 
         mConfigHash = configData.sha256().base64();
         mClientId = getConfigString("client_id");
-        mScope = getAuthScope("authorization_scope");
-        mRedirectUri = getRequiredRedirectUri("redirect_uri");
+        mScope = getRequiredConfigString("authorization_scope");
+        mRedirectUri = getRequiredConfigUri("redirect_uri");
 
         if(!isRedirectUriRegistered()) {
             throw new InvalidConfigurationException(
@@ -188,6 +189,7 @@ public final class LoadConfig {
                             + "exists in your app manifest."
             );
         }
+
 
         if (getConfigString("discovery_uri") == null) {
             mAuthEndpointUri = getRequiredConfigWebUri("authorization_endpoint_uri");
@@ -220,7 +222,7 @@ public final class LoadConfig {
     }
 
     @NonNull
-    private String getAuthScope(String propName)
+    private String getRequiredConfigString(String propName)
             throws InvalidConfigurationException {
         String value = getConfigString(propName);
         if (value == null) {
@@ -232,7 +234,7 @@ public final class LoadConfig {
     }
 
     @NonNull
-    Uri getRequiredRedirectUri(String propName)
+    Uri getRequiredConfigUri(String propName)
             throws InvalidConfigurationException {
         String uriStr = getConfigString(propName);
         Uri uri;
@@ -264,7 +266,7 @@ public final class LoadConfig {
 
     Uri getRequiredConfigWebUri(String propName)
             throws InvalidConfigurationException {
-        Uri uri = getRequiredRedirectUri(propName);
+        Uri uri = getRequiredConfigUri(propName);
         String scheme = uri.getScheme();
         if (TextUtils.isEmpty(scheme) || !("http".equals(scheme) || "https".equals(scheme))) {
             throw new InvalidConfigurationException(

@@ -111,11 +111,11 @@ public class GetToken extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle state) {
-//        super.onSaveInstanceState(state);
-//
-//    }
+    @Override
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+
+    }
 
     @Override
     protected void onDestroy() {
@@ -182,6 +182,10 @@ public class GetToken extends AppCompatActivity {
                 ? View.VISIBLE
                 : View.GONE);
         refreshTokenButton.setOnClickListener((View view) -> refreshAccessToken());
+
+        AuthorizationServiceDiscovery discoveryDoc =
+                state.getAuthorizationServiceConfiguration().discoveryDoc;
+
 
         ((Button)findViewById(R.id.sign_out)).setOnClickListener((View view) -> signOut());
     }
