@@ -23,6 +23,7 @@ import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceDiscovery;
 import net.openid.appauth.ClientAuthentication;
+import net.openid.appauth.ClientSecretBasic;
 import net.openid.appauth.TokenRequest;
 import net.openid.appauth.TokenResponse;
 
@@ -211,7 +212,7 @@ public class GetToken extends AppCompatActivity {
     private void performTokenRequest(
             TokenRequest request,
             AuthorizationService.TokenResponseCallback callback) {
-        ClientAuthentication clientAuthentication;
+        ClientAuthentication clientAuthentication = new ClientSecretBasic();
         try {
             clientAuthentication = mStateManager.getCurrent().getClientAuthentication();
         } catch (ClientAuthentication.UnsupportedAuthenticationMethod ex) {
