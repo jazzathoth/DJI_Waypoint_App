@@ -1,0 +1,8 @@
+#include <jni.h>
+
+//Save this as keys.c and add your secret
+
+JNIEXPORT jstring JNICALL
+Java_com_my_app_SecretGet_getJDSecret(JNIEnv *env, jclass instance) {
+    return (*env)->NewStringUTF(env, "secret");
+}
