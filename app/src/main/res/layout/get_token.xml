@@ -110,13 +110,6 @@
                         style="@style/Widget.AppCompat.Button"/>
 
                     <Button
-                        android:id="@+id/view_profile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/view_profile"
-                        style="@style/Widget.AppCompat.Button" />
-
-                    <Button
                         android:id="@+id/sign_out"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

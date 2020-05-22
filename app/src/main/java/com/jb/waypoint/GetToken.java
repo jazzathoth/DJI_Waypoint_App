@@ -47,10 +47,18 @@ public class GetToken extends AppCompatActivity {
 
     private static final String TAG = "TokenActivity";
 
+
     private AuthorizationService mAuthService;
     private AuthStateManager mStateManager;
     private ExecutorService mExecutor;
     private LoadConfig mConfig;
+
+    static {
+        System.loadLibrary("keys");
+    }
+
+    private static native String getJDSecret();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,15 +220,15 @@ public class GetToken extends AppCompatActivity {
     private void performTokenRequest(
             TokenRequest request,
             AuthorizationService.TokenResponseCallback callback) {
-        ClientAuthentication clientAuthentication = new ClientSecretBasic();
-        try {
-            clientAuthentication = mStateManager.getCurrent().getClientAuthentication();
-        } catch (ClientAuthentication.UnsupportedAuthenticationMethod ex) {
-            Log.d(TAG, "Token request cannot be made, client authentication for the token "
-                    + "endpoint could not be constructed (%s)", ex);
-            displayNotAuthorized("Client authentication method is unsupported");
-            return;
-        }
+        ClientAuthentication clientAuthentication = new ClientSecretBasic(getJDSecret());
+//        try {
+//            clientAuthentication = mStateManager.getCurrent().getClientAuthentication();
+//        } catch (ClientAuthentication.UnsupportedAuthenticationMethod ex) {
+//            Log.d(TAG, "Token request cannot be made, client authentication for the token "
+//                    + "endpoint could not be constructed (%s)", ex);
+//            displayNotAuthorized("Client authentication method is unsupported");
+//            return;
+//        }
         mAuthService.performTokenRequest(
                 request,
                 clientAuthentication,
