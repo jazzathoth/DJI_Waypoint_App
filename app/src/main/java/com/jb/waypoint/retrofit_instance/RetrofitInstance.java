@@ -7,6 +7,7 @@ public class RetrofitInstance {
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://sandboxapi.deere.com/";
 
+
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
