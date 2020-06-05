@@ -17,6 +17,7 @@ import com.jb.waypoint.model.Organizations;
 import com.jb.waypoint.model.OrganizationsList;
 import com.jb.waypoint.retrofit_instance.RetrofitInstance;
 
+import net.openid.appauth.AppAuthConfiguration;
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationService;
@@ -43,6 +44,7 @@ public class FieldSelector extends AppCompatActivity {
     private AuthorizationService authorizationService;
     private OrganizationsAdapter organizationsAdapter;
     private RecyclerView recyclerView;
+    private AuthStateManager authStateManager;
 //    private String baseUrl = getString(R.string.jd_base_url);
 //    private JDClient client = new JDClient(baseUrl);
 
@@ -53,6 +55,15 @@ public class FieldSelector extends AppCompatActivity {
 //        Toolbar toolbar = findViewById(R.id.toolbar_field_selector);
 //        setSupportActionBar(toolbar);
 
+        LoadConfig config = LoadConfig.getInstance(this);
+        authStateManager = AuthStateManager.getInstance(this);
+        authState = authStateManager.getCurrent();
+
+        authorizationService = new AuthorizationService(
+        this,
+        new AppAuthConfiguration.Builder()
+                .setConnectionBuilder(config.getConnectionBuilder())
+                .build());
 
 
         authState.performActionWithFreshTokens(authorizationService, (String accessToken,
