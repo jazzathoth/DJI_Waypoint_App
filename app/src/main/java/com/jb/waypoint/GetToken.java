@@ -195,6 +195,17 @@ public class GetToken extends AppCompatActivity {
         AuthorizationServiceDiscovery discoveryDoc =
                 state.getAuthorizationServiceConfiguration().discoveryDoc;
 
+        Button fieldSelector = (Button)findViewById(R.id.open_field_selector);
+
+        fieldSelector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GetToken.this, FieldSelector.class));
+            }
+        });
+
+
+
 
         ((Button)findViewById(R.id.sign_out)).setOnClickListener((View view) -> signOut());
     }
