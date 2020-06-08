@@ -1,18 +1,15 @@
 package com.jb.waypoint;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,21 +24,10 @@ import net.openid.appauth.ClientSecretBasic;
 import net.openid.appauth.TokenRequest;
 import net.openid.appauth.TokenResponse;
 
-import dji.internal.rtk.NRTIP.NtripClientRequest;
-import okio.Okio;
-
 import org.joda.time.format.DateTimeFormat;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GetToken extends AppCompatActivity {
 
@@ -200,7 +186,7 @@ public class GetToken extends AppCompatActivity {
         fieldSelector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GetToken.this, FieldSelector.class));
+                startActivity(new Intent(GetToken.this, OrgSelect.class));
             }
         });
 

@@ -85,8 +85,12 @@
 
         </activity>
 
-        <activity android:name=".FieldSelector"
+        <activity android:name=".OrgSelect"
             android:label="Select Field">
+        </activity>
+
+        <activity android:name=".ClientSelect"
+            android:label="Select Client">
         </activity>
 
         <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">

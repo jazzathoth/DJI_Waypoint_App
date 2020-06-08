@@ -1,5 +1,7 @@
 package com.jb.waypoint.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,10 @@ import java.util.ArrayList;
 public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdapter.OrganizationsViewHolder> {
     private ArrayList<Organizations> organizationsArrayList;
 
-    public OrganizationsAdapter(ArrayList<Organizations> organizationsArrayList){
+    private Context context;
+
+    public OrganizationsAdapter(ArrayList<Organizations> organizationsArrayList, Context c){
+        context = c;
         this.organizationsArrayList = organizationsArrayList;
     }
 
@@ -33,6 +38,16 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
     public void onBindViewHolder(OrganizationsViewHolder holder, int position) {
         holder.txtOrgTitle.setText(organizationsArrayList.get(position).getName());
         holder.txtOrgDescription.setText(organizationsArrayList.get(position).getId());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentClientSelect = new Intent(context, ClientsAdapter.class);
+                intentClientSelect.putExtra("org_id",
+                        organizationsArrayList.get(position).getId());
+                v.getContext().startActivity(intentClientSelect);
+            }
+        });
     }
 
     @Override

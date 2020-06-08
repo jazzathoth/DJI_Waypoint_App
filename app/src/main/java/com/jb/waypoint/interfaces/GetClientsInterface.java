@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 public interface GetClientsInterface {
     @Headers("Accept: application/vnd.deere.axiom.v3+json")
     @GET("platform/organizations/{orgid}/clients")
-    Call<ClientsList> getOrganizationData(@Query("orgid") int orgId,
+    Call<ClientsList> getOrganizationData(@Query("orgid") String orgId,
                                           @Header("Authorization") String auth);
 }

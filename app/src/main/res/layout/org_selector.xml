@@ -18,7 +18,7 @@
 <!--            />-->
 <!--    </com.google.android.material.appbar.AppBarLayout>-->
 
-    <include layout="@layout/content_field_selector"/>
+    <include layout="@layout/content_org_selector"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

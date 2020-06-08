@@ -2,12 +2,10 @@ package com.jb.waypoint;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,23 +20,16 @@ import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationService;
 
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.CompletableFuture;
 
-import okhttp3.Authenticator;
-import okhttp3.Request;
-import okhttp3.Route;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class FieldSelector extends AppCompatActivity {
+public class OrgSelect extends AppCompatActivity {
 
-    private static final String TAG = "ChooseFarm";
+    private static final String TAG = "ChooseOrg";
 
     private AuthState authState;
     private AuthorizationService authorizationService;
@@ -51,7 +42,7 @@ public class FieldSelector extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.field_selector);
+        setContentView(R.layout.org_selector);
 //        Toolbar toolbar = findViewById(R.id.toolbar_field_selector);
 //        setSupportActionBar(toolbar);
 
@@ -86,7 +77,7 @@ public class FieldSelector extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<OrganizationsList> call, Throwable t) {
-                    Toast.makeText(FieldSelector.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OrgSelect.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         });
@@ -94,22 +85,12 @@ public class FieldSelector extends AppCompatActivity {
 
     private void generateOrganizationsList(ArrayList<Organizations> organizationsArrayList) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_content_field_selector);
-        OrganizationsAdapter adapter = new OrganizationsAdapter(organizationsArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FieldSelector.this);
+        OrganizationsAdapter adapter = new OrganizationsAdapter(organizationsArrayList, OrgSelect.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(OrgSelect.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
-//    class AppAuthAuthenticator implements Authenticator{
-//        private AuthorizationService authService;
-//        private AuthState authState;
-//
-//
-//        @Override
-//        public Request authenticate(Route route, okhttp3.Response response) throws IOException {
-//            CompletableFuture<Request> future;
-//            authState.performActionWithFreshTokens(authService);
-//        }
-//    }
+
 
 }
