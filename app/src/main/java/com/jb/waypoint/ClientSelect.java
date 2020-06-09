@@ -86,7 +86,7 @@ public class ClientSelect extends AppCompatActivity {
 
     private void generateClientsList(ArrayList<Clients> clientsArrayList) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_content_field_selector);
-        ClientsAdapter adapter = new ClientsAdapter(clientsArrayList);
+        ClientsAdapter adapter = new ClientsAdapter(clientsArrayList, orgId,ClientSelect.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ClientSelect.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

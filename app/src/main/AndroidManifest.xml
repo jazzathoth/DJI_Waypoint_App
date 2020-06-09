@@ -93,6 +93,10 @@
             android:label="Select Client">
         </activity>
 
+        <activity android:name=".FieldSelect"
+            android:label="Select Field">
+        </activity>
+
         <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>

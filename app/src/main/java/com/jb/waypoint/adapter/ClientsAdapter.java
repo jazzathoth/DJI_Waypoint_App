@@ -1,5 +1,7 @@
 package com.jb.waypoint.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jb.waypoint.FieldSelect;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Clients;
 
@@ -16,7 +19,12 @@ import java.util.ArrayList;
 public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsViewHolder> {
     private ArrayList<Clients> clientsArrayList;
 
-    public ClientsAdapter(ArrayList<Clients> clinetsArrayList){
+    private Context context;
+    String orgId;
+
+    public ClientsAdapter(ArrayList<Clients> clientsArrayList, String o, Context c){
+        context = c;
+        orgId = o;
         this.clientsArrayList = clientsArrayList;
     }
 
@@ -33,6 +41,17 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsV
     public void onBindViewHolder(ClientsViewHolder holder, int position) {
         holder.txtClientTitle.setText(clientsArrayList.get(position).getName());
         holder.txtClientDescription.setText(clientsArrayList.get(position).getId());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentFarmSelect = new Intent(context, FieldSelect.class);
+                intentFarmSelect.putExtra("org_id", orgId);
+                intentFarmSelect.putExtra("client_id",
+                        clientsArrayList.get(position).getId());
+                v.getContext().startActivity(intentFarmSelect);
+            }
+        });
     }
 
     @Override

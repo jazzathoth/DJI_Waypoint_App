@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jb.waypoint.ClientSelect;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Organizations;
 
@@ -42,7 +43,7 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentClientSelect = new Intent(context, ClientsAdapter.class);
+                Intent intentClientSelect = new Intent(context, ClientSelect.class);
                 intentClientSelect.putExtra("org_id",
                         organizationsArrayList.get(position).getId());
                 v.getContext().startActivity(intentClientSelect);
