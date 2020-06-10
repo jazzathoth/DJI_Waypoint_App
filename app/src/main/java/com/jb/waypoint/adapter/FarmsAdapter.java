@@ -64,7 +64,11 @@ public class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.FarmsViewHol
         FarmsViewHolder(View itemView) {
             super(itemView);
             txtFarmTitle = itemView.findViewById(R.id.text_single_row_fs_title);
-            txtFarmDescription = itemView.findViewById(R.id.text_single_row_description);
+            txtFarmDescription = itemView.findViewById(R.id.text_single_row_fs_description);
+            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

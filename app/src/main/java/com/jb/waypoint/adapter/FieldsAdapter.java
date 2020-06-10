@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Fields;
 import com.jb.waypoint.selectors.BoundarySelect;
-import com.jb.waypoint.selectors.FarmSelect;
 
 import java.util.ArrayList;
 
@@ -69,7 +68,11 @@ public class FieldsAdapter extends RecyclerView.Adapter<FieldsAdapter.FieldsView
         public FieldsViewHolder(View itemView) {
             super(itemView);
             txtFieldTitle = itemView.findViewById(R.id.text_single_row_fs_title);
-            txtFieldDescription = itemView.findViewById(R.id.text_single_row_description);
+            txtFieldDescription = itemView.findViewById(R.id.text_single_row_fs_description);
+            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

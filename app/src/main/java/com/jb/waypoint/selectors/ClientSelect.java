@@ -37,7 +37,7 @@ public class ClientSelect extends AppCompatActivity {
     private ClientsAdapter clientsAdapter;
     private RecyclerView recyclerView;
     private AuthStateManager authStateManager;
-    String orgId;
+    String orgId, orgName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class ClientSelect extends AppCompatActivity {
 
         Intent intentClientSelect = getIntent();
         orgId = intentClientSelect.getStringExtra("org_id");
+        orgName = intentClientSelect.getStringExtra("org_name");
 
         LoadConfig config = LoadConfig.getInstance(this);
         authStateManager = AuthStateManager.getInstance(this);
@@ -93,8 +94,12 @@ public class ClientSelect extends AppCompatActivity {
 
     private void generateClientsList(ArrayList<ClientsValues> getClientsValuesArrayList) {
         recyclerView = findViewById(R.id.recycler_view_content_field_selector);
-        clientsAdapter = new ClientsAdapter(getClientsValuesArrayList, orgId,ClientSelect.this);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ClientSelect.this);
+        clientsAdapter = new ClientsAdapter(getClientsValuesArrayList,
+                orgId,
+                orgName,
+                ClientSelect.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
+                ClientSelect.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(clientsAdapter);
     }

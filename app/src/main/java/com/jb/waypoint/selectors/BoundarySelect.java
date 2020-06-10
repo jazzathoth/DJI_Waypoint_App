@@ -3,6 +3,7 @@ package com.jb.waypoint.selectors;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -77,12 +78,14 @@ public class BoundarySelect extends AppCompatActivity {
                      boundariesListCall.enqueue(new Callback<BoundariesList>() {
                          @Override
                          public void onResponse(Call<BoundariesList> call, Response<BoundariesList> response) {
-
+                             generateBoundariesList(response.body().getBoundariesArrayList());
                          }
 
                          @Override
                          public void onFailure(Call<BoundariesList> call, Throwable t) {
-
+                             Toast.makeText(BoundarySelect.this,
+                                     "Error: " + t.getMessage(),
+                                     Toast.LENGTH_LONG).show();
                          }
                      });
                  });

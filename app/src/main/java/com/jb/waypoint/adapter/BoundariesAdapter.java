@@ -53,7 +53,11 @@ public class BoundariesAdapter extends RecyclerView.Adapter<BoundariesAdapter.Bo
         BoundariesViewHolder(View itemView) {
             super(itemView);
             txtBoundaryTitle = itemView.findViewById(R.id.text_single_row_fs_title);
-            txtBoundaryDescription = itemView.findViewById(R.id.text_single_row_description);
+            txtBoundaryDescription = itemView.findViewById(R.id.text_single_row_fs_description);
+            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

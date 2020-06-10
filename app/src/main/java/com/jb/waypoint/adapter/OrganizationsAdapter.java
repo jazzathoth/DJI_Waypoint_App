@@ -46,6 +46,8 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
                 Intent intentClientSelect = new Intent(context, ClientSelect.class);
                 intentClientSelect.putExtra("org_id",
                         organizationsArrayList.get(position).getId());
+                intentClientSelect.putExtra("org_name",
+                        organizationsArrayList.get(position).getName());
                 v.getContext().startActivity(intentClientSelect);
             }
         });
@@ -63,7 +65,11 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
         OrganizationsViewHolder(View itemView) {
             super(itemView);
             txtOrgTitle = itemView.findViewById(R.id.text_single_row_fs_title);
-            txtOrgDescription = itemView.findViewById(R.id.text_single_row_description);
+            txtOrgDescription = itemView.findViewById(R.id.text_single_row_fs_description);
+            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
+            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

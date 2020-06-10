@@ -10,10 +10,59 @@
     tools:showIn="@layout/org_selector"
     >
 
+
+    <TextView
+        android:id="@+id/text_fs_content_org"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_fs_content_client"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_fs_content_client"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_fs_content_farm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_fs_content_org" />
+
+    <TextView
+        android:id="@+id/text_fs_content_farm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_fs_content_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_fs_content_client" />
+
+    <TextView
+        android:id="@+id/text_fs_content_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_content_field_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_fs_content_farm" />
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_content_field_selector"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/text_fs_content_field"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
