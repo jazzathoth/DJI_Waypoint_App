@@ -85,16 +85,24 @@
 
         </activity>
 
-        <activity android:name=".OrgSelect"
+        <activity android:name=".selectors.OrgSelect"
             android:label="Select Field">
         </activity>
 
-        <activity android:name=".ClientSelect"
+        <activity android:name=".selectors.ClientSelect"
             android:label="Select Client">
         </activity>
 
-        <activity android:name=".FieldSelect"
+        <activity android:name=".selectors.FieldSelect"
             android:label="Select Field">
+        </activity>
+
+        <activity android:name=".selectors.FarmSelect"
+            android:label="Select Farm">
+        </activity>
+
+        <activity android:name=".selectors.BoundarySelect"
+            android:label="Select Boundary">
         </activity>
 
         <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">

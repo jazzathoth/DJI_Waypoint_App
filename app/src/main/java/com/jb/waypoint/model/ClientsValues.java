@@ -1,15 +1,18 @@
 package com.jb.waypoint.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Clients {
+public class ClientsValues {
 
     @SerializedName("name")
+    @Expose
     private String name;
     @SerializedName("id")
+    @Expose
     private String id;
 
-    public Clients(String name, String id) {
+    public ClientsValues(String name, String id) {
         this.name = name;
         this.id = id;
     }

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jb.waypoint.ClientSelect;
+import com.jb.waypoint.selectors.ClientSelect;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Organizations;
 

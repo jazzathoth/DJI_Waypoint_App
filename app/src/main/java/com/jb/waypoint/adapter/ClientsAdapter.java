@@ -10,22 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jb.waypoint.FieldSelect;
 import com.jb.waypoint.R;
-import com.jb.waypoint.model.Clients;
+import com.jb.waypoint.model.ClientsValues;
+import com.jb.waypoint.selectors.FarmSelect;
 
 import java.util.ArrayList;
 
 public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsViewHolder> {
-    private ArrayList<Clients> clientsArrayList;
+    private ArrayList<ClientsValues> clientsValuesArrayList;
 
-    private Context context;
+    private Context contextCA;
     String orgId;
 
-    public ClientsAdapter(ArrayList<Clients> clientsArrayList, String o, Context c){
-        context = c;
+    public ClientsAdapter(ArrayList<ClientsValues> clientsValuesArrayList, String o, Context c){
+        contextCA = c;
         orgId = o;
-        this.clientsArrayList = clientsArrayList;
+        this.clientsValuesArrayList = clientsValuesArrayList;
     }
 
     @NonNull
@@ -39,24 +39,21 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsV
 
     @Override
     public void onBindViewHolder(ClientsViewHolder holder, int position) {
-        holder.txtClientTitle.setText(clientsArrayList.get(position).getName());
-        holder.txtClientDescription.setText(clientsArrayList.get(position).getId());
+        holder.txtClientTitle.setText(clientsValuesArrayList.get(position).getName());
+        holder.txtClientDescription.setText(clientsValuesArrayList.get(position).getId());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentFarmSelect = new Intent(context, FieldSelect.class);
-                intentFarmSelect.putExtra("org_id", orgId);
-                intentFarmSelect.putExtra("client_id",
-                        clientsArrayList.get(position).getId());
-                v.getContext().startActivity(intentFarmSelect);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intentFarmSelect = new Intent(contextCA, FarmSelect.class);
+            intentFarmSelect.putExtra("org_id", orgId);
+            intentFarmSelect.putExtra("client_id",
+                    clientsValuesArrayList.get(position).getId());
+            v.getContext().startActivity(intentFarmSelect);
         });
     }
 
     @Override
     public int getItemCount() {
-        return clientsArrayList.size();
+        return clientsValuesArrayList.size();
     }
 
 

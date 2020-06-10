@@ -11,7 +11,7 @@ public class BoundariesList {
     public ArrayList<Boundaries> getBoundariesArrayList() {
         return boundariesArrayList;
     }
-    public void setBoundariesArrayList (ArrayList<Boundaries> boundariesArrayList) {
+    public void setBoundariesArrayList(ArrayList<Boundaries> boundariesArrayList) {
         this.boundariesArrayList = boundariesArrayList;
     }
 }

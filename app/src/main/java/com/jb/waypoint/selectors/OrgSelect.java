@@ -1,14 +1,16 @@
-package com.jb.waypoint;
+package com.jb.waypoint.selectors;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jb.waypoint.AuthStateManager;
+import com.jb.waypoint.LoadConfig;
+import com.jb.waypoint.R;
 import com.jb.waypoint.adapter.OrganizationsAdapter;
 import com.jb.waypoint.interfaces.GetOrganizationsInterface;
 import com.jb.waypoint.model.Organizations;
@@ -72,7 +74,11 @@ public class OrgSelect extends AppCompatActivity {
             organizationsListCall.enqueue(new Callback<OrganizationsList>() {
                 @Override
                 public void onResponse(Call<OrganizationsList> call, Response<OrganizationsList> response) {
-                    generateOrganizationsList(response.body().getOrganizationsArrayList());
+                    if(response.body() != null) {
+                        generateOrganizationsList(response.body().getOrganizationsArrayList());
+                    } else { Toast.makeText(OrgSelect.this,
+                                     "response: " + response.code(),
+                                     Toast.LENGTH_LONG).show();}
                 }
 
                 @Override

@@ -4,15 +4,17 @@ import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Boundaries {
     @SerializedName("name")
     private String name;
     @SerializedName("created")
     private String created;
     @SerializedName("multipolygons")
-    private JSONObject boundary;
+    private ArrayList<Multipolygon> boundary;
 
-    public Boundaries(String name, String created, JSONObject boundary) {
+    public Boundaries(String name, String created, ArrayList<Multipolygon> boundary) {
         this.name = name;
         this.created = created;
         this.boundary = boundary;
@@ -34,11 +36,11 @@ public class Boundaries {
         this.created = created;
     }
 
-    public JSONObject getBoundary() {
+    public ArrayList<Multipolygon> getBoundary() {
         return boundary;
     }
 
-    public void setBoundary(JSONObject boundary) {
+    public void setBoundary(ArrayList<Multipolygon> boundary) {
         this.boundary = boundary;
     }
 }
