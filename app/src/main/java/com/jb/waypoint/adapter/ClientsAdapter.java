@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.ClientsValues;
 import com.jb.waypoint.selectors.FarmSelect;
+import com.jb.waypoint.selectors.SelectorState;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,8 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsV
 
     private Context contextCA;
     String orgId, orgName;
+
+    SelectorState selectorState = SelectorState.getInstance();
 
     public ClientsAdapter(ArrayList<ClientsValues> clientsValuesArrayList,
                           String oid,
@@ -45,16 +48,11 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsV
     public void onBindViewHolder(ClientsViewHolder holder, int position) {
         holder.txtClientTitle.setText(clientsValuesArrayList.get(position).getName());
         holder.txtClientDescription.setText(clientsValuesArrayList.get(position).getId());
-        holder.txtOrgName.setText(orgName);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intentFarmSelect = new Intent(contextCA, FarmSelect.class);
-            intentFarmSelect.putExtra("org_id", orgId);
-            intentFarmSelect.putExtra("org_name", orgName);
-            intentFarmSelect.putExtra("client_id",
-                    clientsValuesArrayList.get(position).getId());
-            intentFarmSelect.putExtra("client_name",
-                    clientsValuesArrayList.get(position).getName());
+            selectorState.setClientId(clientsValuesArrayList.get(position).getId());
+            selectorState.setClientName(clientsValuesArrayList.get(position).getName());
             v.getContext().startActivity(intentFarmSelect);
         });
     }
@@ -66,17 +64,13 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsAdapter.ClientsV
 
 
     class ClientsViewHolder extends RecyclerView.ViewHolder {
-        TextView txtClientTitle, txtClientDescription, txtOrgName;
+        TextView txtClientTitle, txtClientDescription;
 
         ClientsViewHolder(View itemView) {
             super(itemView);
             txtClientTitle = itemView.findViewById(R.id.text_single_row_fs_title);
             txtClientDescription = itemView.findViewById(R.id.text_single_row_fs_description);
-            txtOrgName = itemView.findViewById(R.id.text_fs_content_org);
-            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.VISIBLE);
-            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
+
         }
     }
 }

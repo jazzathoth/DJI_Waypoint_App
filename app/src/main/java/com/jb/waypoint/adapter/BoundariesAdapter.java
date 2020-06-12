@@ -11,12 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Boundaries;
+import com.jb.waypoint.selectors.SelectorState;
 
+import java.nio.channels.SelectableChannel;
 import java.util.ArrayList;
 
 public class BoundariesAdapter extends RecyclerView.Adapter<BoundariesAdapter.BoundariesViewHolder> {
 
     private ArrayList<Boundaries> boundariesArrayList;
+
+    SelectorState selectorState = SelectorState.getInstance();
 
     private Context contextBA;
     String orgId, fieldId;
@@ -40,6 +44,11 @@ public class BoundariesAdapter extends RecyclerView.Adapter<BoundariesAdapter.Bo
     public void onBindViewHolder(@NonNull BoundariesAdapter.BoundariesViewHolder holder, int position) {
         holder.txtBoundaryTitle.setText(boundariesArrayList.get(position).getName());
         holder.txtBoundaryDescription.setText(boundariesArrayList.get(position).getCreated());
+
+        holder.itemView.setOnClickListener(v -> {
+            selectorState.setBorderId(boundariesArrayList.get(position).getId());
+            selectorState.setBorderName(boundariesArrayList.get(position).getName());
+        });
     }
 
     @Override
@@ -54,10 +63,6 @@ public class BoundariesAdapter extends RecyclerView.Adapter<BoundariesAdapter.Bo
             super(itemView);
             txtBoundaryTitle = itemView.findViewById(R.id.text_single_row_fs_title);
             txtBoundaryDescription = itemView.findViewById(R.id.text_single_row_fs_description);
-            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

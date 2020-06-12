@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jb.waypoint.selectors.FieldSelect;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Farms;
+import com.jb.waypoint.selectors.SelectorState;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,8 @@ public class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.FarmsViewHol
 
     private Context contextFA;
     String orgId;
+
+    SelectorState selectorState = SelectorState.getInstance();
 
     public FarmsAdapter(ArrayList<Farms> farmsArrayList, String o, Context c) {
         this.farmsArrayList = farmsArrayList;
@@ -45,8 +48,8 @@ public class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.FarmsViewHol
 
         holder.itemView.setOnClickListener(v -> {
             Intent intentFieldSelect = new Intent(contextFA, FieldSelect.class);
-            intentFieldSelect.putExtra("org_id", orgId);
-            intentFieldSelect.putExtra("farm_id", farmsArrayList.get(position).getId());
+            selectorState.setFarmId(farmsArrayList.get(position).getId());
+            selectorState.setFarmName(farmsArrayList.get(position).getName());
 
             v.getContext().startActivity(intentFieldSelect);
         });
@@ -65,10 +68,6 @@ public class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.FarmsViewHol
             super(itemView);
             txtFarmTitle = itemView.findViewById(R.id.text_single_row_fs_title);
             txtFarmDescription = itemView.findViewById(R.id.text_single_row_fs_description);
-            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

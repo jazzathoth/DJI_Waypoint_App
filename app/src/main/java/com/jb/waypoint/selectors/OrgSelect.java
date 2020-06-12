@@ -2,11 +2,14 @@ package com.jb.waypoint.selectors;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.jb.waypoint.AuthStateManager;
 import com.jb.waypoint.LoadConfig;
@@ -38,15 +41,21 @@ public class OrgSelect extends AppCompatActivity {
     private OrganizationsAdapter organizationsAdapter;
     private RecyclerView recyclerView;
     private AuthStateManager authStateManager;
-//    private String baseUrl = getString(R.string.jd_base_url);
-//    private JDClient client = new JDClient(baseUrl);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.org_selector);
-//        Toolbar toolbar = findViewById(R.id.toolbar_field_selector);
-//        setSupportActionBar(toolbar);
+
+        Toolbar selectorToolbar = findViewById(R.id.selector_toolbar);
+        setSupportActionBar(selectorToolbar);
+        getSupportActionBar().setTitle("Choose Organization");
+
+        setOrgText("", false);
+        setClientText("", false);
+        setFarmText("", false);
+        setFieldText("", false);
 
         LoadConfig config = LoadConfig.getInstance(this);
         authStateManager = AuthStateManager.getInstance(this);
@@ -89,14 +98,49 @@ public class OrgSelect extends AppCompatActivity {
         });
     }
 
+
     private void generateOrganizationsList(ArrayList<Organizations> organizationsArrayList) {
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_content_field_selector);
-        OrganizationsAdapter adapter = new OrganizationsAdapter(organizationsArrayList, OrgSelect.this);
+
+        recyclerView = findViewById(R.id.recycler_view_content_field_selector);
+        organizationsAdapter = new OrganizationsAdapter(organizationsArrayList, OrgSelect.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(OrgSelect.this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(organizationsAdapter);
+
     }
 
+    private void setOrgText(String txtOrg, boolean visible) {
+        TextView topText = findViewById(R.id.selector_header_text_org);
+        topText.setText(txtOrg);
+        if (!visible) {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setClientText(String txtClient, boolean visible) {
 
 
+        TextView topText = findViewById(R.id.selector_header_text_client);
+        if (!visible) {
+            topText.setText(txtClient);}
+        else {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setFarmText(String txtFarm, boolean visible) {
+        TextView topText = findViewById(R.id.selector_header_text_farm);
+        topText.setText(txtFarm);
+        if (!visible) {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setFieldText(String txtField, boolean visible) {
+        TextView topText = findViewById(R.id.selector_header_text_field);
+        topText.setText(txtField);
+        if (!visible) {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
 }

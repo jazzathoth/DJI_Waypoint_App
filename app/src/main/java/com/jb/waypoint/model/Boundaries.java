@@ -11,8 +11,11 @@ public class Boundaries {
     private String name;
     @SerializedName("created")
     private String created;
+    @SerializedName("id")
+    private String id;
     @SerializedName("multipolygons")
     private ArrayList<Multipolygon> boundary;
+
 
     public Boundaries(String name, String created, ArrayList<Multipolygon> boundary) {
         this.name = name;
@@ -34,6 +37,14 @@ public class Boundaries {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public ArrayList<Multipolygon> getBoundary() {

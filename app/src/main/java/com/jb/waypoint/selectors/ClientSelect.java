@@ -3,9 +3,12 @@ package com.jb.waypoint.selectors;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,14 +42,24 @@ public class ClientSelect extends AppCompatActivity {
     private AuthStateManager authStateManager;
     String orgId, orgName;
 
+    SelectorState selectorState = SelectorState.getInstance();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.org_selector);
 
-        Intent intentClientSelect = getIntent();
-        orgId = intentClientSelect.getStringExtra("org_id");
-        orgName = intentClientSelect.getStringExtra("org_name");
+        orgId = selectorState.getOrgId();
+        orgName = selectorState.getOrgName();
+
+        Toolbar selectorToolbar = findViewById(R.id.selector_toolbar);
+        setSupportActionBar(selectorToolbar);
+        getSupportActionBar().setTitle("Choose Client");
+
+        setOrgText(orgName, true);
+        setClientText("", false);
+        setFarmText("", false);
+        setFieldText("", false);
 
         LoadConfig config = LoadConfig.getInstance(this);
         authStateManager = AuthStateManager.getInstance(this);
@@ -102,5 +115,40 @@ public class ClientSelect extends AppCompatActivity {
                 ClientSelect.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(clientsAdapter);
+    }
+
+    private void setOrgText(String txtOrg, boolean visible) {
+        TextView topText = findViewById(R.id.selector_header_text_org);
+        topText.setText(txtOrg);
+        if (!visible) {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setClientText(String txtClient, boolean visible) {
+
+
+        TextView topText = findViewById(R.id.selector_header_text_client);
+        if (!visible) {
+            topText.setText(txtClient);}
+        else {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setFarmText(String txtFarm, boolean visible) {
+        TextView topText = findViewById(R.id.selector_header_text_farm);
+        topText.setText(txtFarm);
+        if (!visible) {
+            topText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setFieldText(String txtField, boolean visible) {
+        TextView topText = findViewById(R.id.selector_header_text_field);
+        topText.setText(txtField);
+        if (!visible) {
+            topText.setVisibility(View.INVISIBLE);
+        }
     }
 }

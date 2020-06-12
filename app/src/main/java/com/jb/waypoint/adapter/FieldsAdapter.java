@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Fields;
 import com.jb.waypoint.selectors.BoundarySelect;
+import com.jb.waypoint.selectors.SelectorState;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,8 @@ public class FieldsAdapter extends RecyclerView.Adapter<FieldsAdapter.FieldsView
     private Context contextFA;
     String orgId;
     String farmId;
+
+    SelectorState selectorState = SelectorState.getInstance();
 
     public FieldsAdapter(ArrayList<Fields> fieldsArrayList, String o, String f, Context c) {
         contextFA = c;
@@ -50,7 +53,8 @@ public class FieldsAdapter extends RecyclerView.Adapter<FieldsAdapter.FieldsView
             public void onClick(View v) {
                 Intent intentBoundarySelect = new Intent(contextFA, BoundarySelect.class);
                 intentBoundarySelect.putExtra("org_id", orgId);
-                intentBoundarySelect.putExtra("field_id", fieldsArrayList.get(position).getId());
+                selectorState.setFieldId(fieldsArrayList.get(position).getId());
+                selectorState.setFieldName(fieldsArrayList.get(position).getName());
 
                 v.getContext().startActivity(intentBoundarySelect);
             }
@@ -69,10 +73,6 @@ public class FieldsAdapter extends RecyclerView.Adapter<FieldsAdapter.FieldsView
             super(itemView);
             txtFieldTitle = itemView.findViewById(R.id.text_single_row_fs_title);
             txtFieldDescription = itemView.findViewById(R.id.text_single_row_fs_description);
-            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
         }
     }
 }

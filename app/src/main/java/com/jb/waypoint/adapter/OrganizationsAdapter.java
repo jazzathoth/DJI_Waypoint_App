@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jb.waypoint.selectors.ClientSelect;
 import com.jb.waypoint.R;
 import com.jb.waypoint.model.Organizations;
+import com.jb.waypoint.selectors.SelectorState;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,8 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
     private ArrayList<Organizations> organizationsArrayList;
 
     private Context context;
+
+    SelectorState selectorState = SelectorState.getInstance();
 
     public OrganizationsAdapter(ArrayList<Organizations> organizationsArrayList, Context c){
         context = c;
@@ -48,6 +51,8 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
                         organizationsArrayList.get(position).getId());
                 intentClientSelect.putExtra("org_name",
                         organizationsArrayList.get(position).getName());
+                selectorState.setOrgId(organizationsArrayList.get(position).getId());
+                selectorState.setOrgName(organizationsArrayList.get(position).getName());
                 v.getContext().startActivity(intentClientSelect);
             }
         });
@@ -66,10 +71,15 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
             super(itemView);
             txtOrgTitle = itemView.findViewById(R.id.text_single_row_fs_title);
             txtOrgDescription = itemView.findViewById(R.id.text_single_row_fs_description);
-            itemView.findViewById(R.id.text_fs_content_org).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_client).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_farm).setVisibility(View.GONE);
-            itemView.findViewById(R.id.text_fs_content_field).setVisibility(View.GONE);
+//            txtOrg = itemView.findViewById(R.id.text_fs_content_org);
+//            txtClient = itemView.findViewById(R.id.text_fs_content_client);
+//            txtFarm = itemView.findViewById(R.id.text_fs_content_farm);
+//            txtField = itemView.findViewById(R.id.text_fs_content_field);
+//
+//            txtOrg.setVisibility(View.GONE);
+//            txtClient.setVisibility(View.GONE);
+//            txtFarm.setVisibility(View.GONE);
+//            txtField.setVisibility(View.GONE);
         }
     }
 }
