@@ -63,7 +63,7 @@ public class BoundarySelect extends AppCompatActivity {
 
         Toolbar selectorToolbar = findViewById(R.id.selector_toolbar);
         setSupportActionBar(selectorToolbar);
-        getSupportActionBar().setTitle("Choose Organization");
+        getSupportActionBar().setTitle("Choose Boundary");
 
         setOrgText(orgName, true);
         setClientText(clientName, true);
@@ -130,8 +130,10 @@ public class BoundarySelect extends AppCompatActivity {
 
     private void setOrgText(String txtOrg, boolean visible) {
         TextView topText = findViewById(R.id.selector_header_text_org);
-        topText.setText(txtOrg);
-        if (!visible) {
+        if (visible) {
+            topText.setText(txtOrg + " > ");
+        }
+        else {
             topText.setVisibility(View.INVISIBLE);
         }
     }
@@ -140,8 +142,8 @@ public class BoundarySelect extends AppCompatActivity {
 
 
         TextView topText = findViewById(R.id.selector_header_text_client);
-        if (!visible) {
-            topText.setText(txtClient);}
+        if (visible) {
+            topText.setText(txtClient + " > ");}
         else {
             topText.setVisibility(View.INVISIBLE);
         }
@@ -149,16 +151,21 @@ public class BoundarySelect extends AppCompatActivity {
 
     private void setFarmText(String txtFarm, boolean visible) {
         TextView topText = findViewById(R.id.selector_header_text_farm);
-        topText.setText(txtFarm);
-        if (!visible) {
+        if (visible) {
+            topText.setText(txtFarm + " > ");
+        }
+        else {
             topText.setVisibility(View.INVISIBLE);
         }
     }
 
     private void setFieldText(String txtField, boolean visible) {
         TextView topText = findViewById(R.id.selector_header_text_field);
-        topText.setText(txtField);
-        if (!visible) {
+
+        if (visible) {
+            topText.setText(txtField + " > ");
+        }
+        else {
             topText.setVisibility(View.INVISIBLE);
         }
     }
