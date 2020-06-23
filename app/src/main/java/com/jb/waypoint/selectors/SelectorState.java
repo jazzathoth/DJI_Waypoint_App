@@ -15,14 +15,6 @@ public class SelectorState {
         return selectorState;
     }
 
-    public static SelectorState getSelectorState() {
-        return selectorState;
-    }
-
-    public static void setSelectorState(SelectorState selectorState) {
-        SelectorState.selectorState = selectorState;
-    }
-
     public String getOrgId() {
         return orgId;
     }
